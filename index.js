@@ -8,7 +8,7 @@ import {
 } from "react-native"
 import PropTypes from 'prop-types'
 
-const defaultIndicatorSize = 16
+const defaultIndicatorSize = 36
 const { width: D_WIDTH } = Dimensions.get('window')
 
 class IJKPlayerView extends Component {
@@ -35,8 +35,8 @@ class IJKPlayerView extends Component {
         const { style,showIndicator } = props
         let width, height
         if (style) {
-            if(width) width = style.width;
-            if(height) height = style.height;
+            if(style.width) width = style.width;
+            if(style.height) height = style.height;
         }
         let videoWrapperWidth = width || D_WIDTH
         let videoWrapperHeight = height || D_WIDTH * 0.7
@@ -187,7 +187,8 @@ class IJKPlayerView extends Component {
             />
             <ActivityIndicator
                 style={{ ...styles.indicator, left: indicatorLeft, top: indicatorTop }}
-                size={'small'}
+                size={'large'}
+                color="#fff"
                 animating={showIndicator}
             />
         </View>
