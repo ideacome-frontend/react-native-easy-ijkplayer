@@ -35,8 +35,8 @@ class IJKPlayerView extends Component {
         const { style,showIndicator } = props
         let width, height
         if (style) {
-            width = style.width
-            height = style.height
+            if(width) width = style.width;
+            if(height) height = style.height;
         }
         let videoWrapperWidth = width || D_WIDTH
         let videoWrapperHeight = height || D_WIDTH * 0.7
