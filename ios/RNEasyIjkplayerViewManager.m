@@ -23,7 +23,7 @@
     RCT_EXPORT_VIEW_PROPERTY(onLoadProgressUpdate, RCTBubblingEventBlock)
     RCT_EXPORT_VIEW_PROPERTY(onInfo, RCTBubblingEventBlock)
     RCT_EXPORT_VIEW_PROPERTY(onComplete, RCTBubblingEventBlock)
-    RCT_EXPORT_VIEW_PROPERTY(onError, RCTBubblingEventBlock)
+    RCT_EXPORT_VIEW_PROPERTY(onError, RCTDirectEventBlock)
 
     RCT_CUSTOM_VIEW_PROPERTY(options, NSDictionary, RNEasyIjkplayerView){
         
