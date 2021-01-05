@@ -2,19 +2,16 @@ package com.easy.ijkplayer;
 
 import android.os.Handler;
 import android.util.Log;
-import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
 import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-
 import java.io.IOException;
-
-import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
+
+
+
 
 public class RNEasyIjkplayerView extends SurfaceView implements LifecycleEventListener {
 
@@ -179,6 +176,7 @@ public class RNEasyIjkplayerView extends SurfaceView implements LifecycleEventLi
             }
             resetSurfaceView();
             mManualPause = false;
+            sendEvent(NAME_INFO_EVENT, "info", "playing");
         } else {
             setDataSource(mCurrUrl);
             initIjkMediaPlayerListener();
@@ -186,6 +184,7 @@ public class RNEasyIjkplayerView extends SurfaceView implements LifecycleEventLi
             resetSurfaceView();
             mIjkPlayer.prepareAsync();
             mManualStop = false;
+            sendEvent(NAME_INFO_EVENT, "info", "playing");
         }
     }
 
@@ -195,6 +194,7 @@ public class RNEasyIjkplayerView extends SurfaceView implements LifecycleEventLi
             mManualPause = true;
             mHandler.removeCallbacks(progressUpdateRunnable);
         }
+        sendEvent(NAME_INFO_EVENT, "info", "paused");
     }
 
     public void stop() {
@@ -203,6 +203,7 @@ public class RNEasyIjkplayerView extends SurfaceView implements LifecycleEventLi
             mIjkPlayer.reset();
             mIjkPlayer = null;
             mManualStop = true;
+            sendEvent(NAME_INFO_EVENT, "info", "stop");
             mHandler.removeCallbacks(progressUpdateRunnable);
         }
     }

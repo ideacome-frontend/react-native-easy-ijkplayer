@@ -7,6 +7,7 @@ import {
     NativeModules, NativeEventEmitter
 } from "react-native"
 import PropTypes from 'prop-types'
+import { Platform } from 'react-native'
 
 const defaultIndicatorSize = 36
 const { width: D_WIDTH } = Dimensions.get('window')
@@ -144,7 +145,13 @@ class IJKPlayerView extends Component {
         onLoadProgressUpdate && onLoadProgressUpdate(loadProgress)
     }
 
-    _onInfo = ({ nativeEvent: { info } }) => {
+    _onInfo = ({ nativeEvent: { info,code } }) => {
+        console.log(code);
+        if(Platform.OS=='android'){
+            if(code==3){
+                info='playing';
+            }
+        }
         console.log('on Info:', info)
         const { onInfo } = this.props
         onInfo && onInfo(info)
