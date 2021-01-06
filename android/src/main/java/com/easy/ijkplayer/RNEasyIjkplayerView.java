@@ -2,12 +2,16 @@ package com.easy.ijkplayer;
 
 import android.os.Handler;
 import android.util.Log;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import java.io.IOException;
+
+import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 
