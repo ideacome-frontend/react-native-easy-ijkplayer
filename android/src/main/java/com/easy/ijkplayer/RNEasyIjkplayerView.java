@@ -234,7 +234,7 @@ public class RNEasyIjkplayerView extends SurfaceView implements LifecycleEventLi
         Log.i(TAG, "onHostResume");
         if (!mManualPause) {
             Log.i(TAG, "exec start");
-            mIjkPlayer.start();
+//            mIjkPlayer.start();
             mHandler.post(progressUpdateRunnable);
         }
     }
@@ -242,8 +242,13 @@ public class RNEasyIjkplayerView extends SurfaceView implements LifecycleEventLi
     @Override
     public void onHostPause() {
         Log.i(TAG, "onHostPause");
-        mIjkPlayer.pause();
-        mHandler.removeCallbacks(progressUpdateRunnable);
+        try {
+            if(mIjkPlayer==null) return;
+//            mIjkPlayer.pause();
+            mHandler.removeCallbacks(progressUpdateRunnable);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
