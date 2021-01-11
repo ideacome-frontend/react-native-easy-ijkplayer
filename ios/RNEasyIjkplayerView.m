@@ -34,8 +34,10 @@
                 NSLog(@"url不能为空");
                 return;
             }
-            
-            _player = [[IJKFFMoviePlayerController alloc]initWithContentURL:_url withOptions:nil];
+            //增加视频秒开功能
+            IJKFFOptions *options = [IJKFFOptions optionsByDefault];
+            [options setFormatOptionIntValue:1 forKey:@"analyzeduration"];
+            _player = [[IJKFFMoviePlayerController alloc]initWithContentURL:_url withOptions:options];
             
             //获取视频的view层
             _playerView = [_player view];

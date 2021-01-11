@@ -132,6 +132,8 @@ public class RNEasyIjkplayerView extends SurfaceView implements LifecycleEventLi
                 stop();
             }
         });
+        //增加视频秒开功能
+        mIjkPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, "analyzeduration", 1);
     }
 
     private void sendEvent(String eventName, String paramName, String paramValue) {
